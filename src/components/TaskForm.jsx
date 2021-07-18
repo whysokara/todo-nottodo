@@ -1,8 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { TaskListContext } from "../context/TaskListContext";
 
 const TaskForm = () => {
-  const { addTask, clearList } = useContext(TaskListContext);
+  const { addTask, clearList, editItem, editTask } =
+    useContext(TaskListContext);
   const [title, setTitle] = useState("");
 
   const handleChange = (e) => {
@@ -10,9 +11,21 @@ const TaskForm = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    addTask(title);
-    setTitle("");
+    if (editItem === null) {
+      addTask(title);
+      setTitle("");
+    } else {
+      editTask(title, editItem.id);
+    }
   };
+
+  useEffect(() => {
+    if (editItem !== null) {
+      setTitle(editItem.title);
+    } else {
+      setTitle("");
+    }
+  }, [editItem]);
   return (
     <form onSubmit={handleSubmit} className="form">
       <input
@@ -25,7 +38,7 @@ const TaskForm = () => {
       />
       <div className="buttons">
         <button type="submit" className="btn add-task-btn">
-          Add Task
+          {editItem ? "Done Edit" : "Add Task"}
         </button>
         <button onClick={clearList} className="btn clear-btn">
           Clear
