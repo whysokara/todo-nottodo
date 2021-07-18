@@ -1,14 +1,10 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useEffect } from "react";
 import { v1 as uuid } from "uuid";
 
 export const TaskListContext = createContext();
 
 const TaskListContextProvider = (props) => {
-  const [tasks, setTasks] = useState([
-    { title: "Read a book", id: 1 },
-    { title: "Tree Plantation", id: 2 },
-    { title: "Code", id: 3 },
-  ]);
+  const [tasks, setTasks] = useState([]);
 
   const [editItem, setEditItem] = useState(null);
 
