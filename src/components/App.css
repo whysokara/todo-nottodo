@@ -162,3 +162,12 @@
   font-size: 18px;
   margin-top: 20px;
 }
+.footer {
+  color: #ccc;
+  display: flex;
+  justify-content: center;
+}
+.twitter {
+  color: yellow;
+  text-decoration: none;
+}
