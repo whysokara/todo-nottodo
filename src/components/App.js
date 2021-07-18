@@ -6,6 +6,7 @@ import TaskForm from "./TaskForm";
 import Header from "./Header";
 
 const App = () => {
+  const footer = "Made by   ";
   return (
     <TaskListContextProvider>
       <div className="container">
@@ -15,6 +16,17 @@ const App = () => {
             <TaskForm />
             <TaskList />
           </div>
+          <span className="footer">
+            {footer}
+            <a
+              className="twitter"
+              href="https://twitter.com/whysokara"
+              target="_blank"
+            >
+              Kara
+            </a>
+            👾
+          </span>
         </div>
       </div>
     </TaskListContextProvider>
